@@ -1,7 +1,12 @@
 <br>
 <br><%= image_tag @photo.avatar.url(:medium) %>
+<br>
+<br>
 
-<% if current_user.id == @user.id %>
-  <br>
-  <br><%= link_to "Delete Picture", user_photo_path(@user, @photo) %>
+<% if current_user != nil %>
+  <%= link_to "Add Tag", new_user_photo_tag_path(@user, @photo) %>
+  <% if current_user.id == @user.id %>
+    | <%= link_to "Delete Picture", user_photo_path(@user, @photo) %>
+  <% end %>
 <% end %>
+
