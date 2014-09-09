@@ -1,0 +1,12 @@
+<br>
+<br><%= image_tag @photo.avatar.url(:medium) %>
+<br>
+
+<%= form_for [@user, @photo, @tag] do |f| %>
+  <p>In this photo:</p>
+  <div class = "form-group">
+    <%= f.collection_select :user_id, User.all, :id, :name %>
+    <%= f.hidden_field :photo_id, value: @photo.id %>
+  </div>
+  <%= f.submit %>
+<% end %>

@@ -13,6 +13,7 @@ class PhotosController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @photo = Photo.find(params[:id])
+    @tags = Tag.where(:photo_id => @photo.id)
   end
 
   def create
@@ -23,6 +24,13 @@ class PhotosController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    flash[:notice] = "Photo has been deleted"
+    redirect_to root_url
   end
 
 private

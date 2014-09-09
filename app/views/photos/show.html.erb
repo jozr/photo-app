@@ -1,12 +1,15 @@
 <br>
 <br><%= image_tag @photo.avatar.url(:medium) %>
 <br>
-<br>
+<p>In this photo: </p>
+<% @tags.each do |tag| %>
+  <p><%= tag.user.name %></p>
+<% end %>
 
 <% if current_user != nil %>
   <%= link_to "Add Tag", new_user_photo_tag_path(@user, @photo) %>
   <% if current_user.id == @user.id %>
-    | <%= link_to "Delete Picture", user_photo_path(@user, @photo) %>
+    | <%= link_to "Delete Picture", user_photo_path(@user, @photo), :data => {:confirm => "Are you sure?", :method => "delete"} %>
   <% end %>
 <% end %>
 
