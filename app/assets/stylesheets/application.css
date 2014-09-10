@@ -5,3 +5,7 @@ body {
    background: #FFA07A;
    color: black;
 }
+
+.smaller-text {
+  font-size: 12px;
+}

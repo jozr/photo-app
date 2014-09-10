@@ -1,44 +1,49 @@
+<% if current_user == nil %>
+
+<% elsif current_user.id == @user.id %>
+<div class="smaller-text"><%= link_to 'Edit User', edit_user_path(@user) %> | <%= link_to "Delete User", user_path(@user),
+                                              :data => {:confirm => "Are you sure?",
+                                              :method => "delete"} %></div>
+
+<% end %>
 <h1><%= @user.name %></h1>
 
-<p>Photos</p>
-<% if @photos == nil %>
-  <h2>None</h2>
+<% if @photos.length == 0 %>
 <% else %>
+<p>Photos</p>
   <% @photos.each do |photo| %>
     <%= link_to (image_tag (photo.avatar.url(:thumb))), user_photo_path(@user, photo) %>
   <% end %>
 <% end %>
+
 <br>
 <% if current_user == nil %>
 <% elsif current_user.id == @user.id %>
-  <%= link_to 'New', new_user_photo_path(@user) %>
+  <%= link_to 'Add Photo', new_user_photo_path(@user) %>
 <% end %>
 
 <br>
 <br>
 
+<% if @tagged_photos.length == 0 %>
+<% else %>
 <p>Tags</p>
   <% @tagged_photos.each do |photo| %>
     <%= link_to (image_tag (photo.first.avatar.url(:thumb))), user_photo_path(@user, photo.first) %>
+  <% end %>
 <% end %>
 
 <br>
 <br>
 
+<% if @liked_photos.length == 0 %>
+<% else %>
 <p>Likes</p>
   <% @liked_photos.each do |like| %>
     <%= link_to (image_tag (like.first.avatar.url(:thumb))), user_photo_path(@user, like.first) %>
+  <% end %>
 <% end %>
 
 <br>
 <br>
-
-<% if current_user == nil %>
-
-<% elsif current_user.id == @user.id %>
- <%= link_to 'Edit User', edit_user_path(@user) %> | <%= link_to "Delete User", user_path(@user),
-                                              :data => {:confirm => "Are you sure?",
-                                              :method => "delete"} %>
-
-<% end %>
 
