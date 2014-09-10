@@ -38,6 +38,7 @@ Alternatively, the live app is on [Heroku](http://photobook-app.herokuapp.com/).
 
 ##Authors
 [Josie](https://github.com/jozwright)
+and
 [Meghan](https://github.com/pdxmeghan)
 
 ##License
