@@ -2,13 +2,13 @@
 PhotoApp lets users interact with photos and friends.
 
 ##Setup
-In your terminal, clone this repo:
+In your terminal, clone this repository:
 
 ```console
 $ clone https://github.com/jozwright/photo_app.git
 ```
 
-Make sure you've installed [postgres](http://www.postgresql.org/download/) and have started the server:
+Make sure you have [postgres](http://www.postgresql.org/download/) installed and have started the server:
 
 ```console
 $ postgres
@@ -32,14 +32,20 @@ Finally, start the rails server:
 ```console
 $ rails s
 ```
-It should now be available at `localhost:3000`.
+Now, it will be available at `http://localhost:3000`.
 
-Alternatively, the live app is on [Heroku](http://photobook-app.herokuapp.com/).
+The live app is also on [Heroku](http://photobook-app.herokuapp.com/).
 
 ##Authors
 [Josie](https://github.com/jozwright)
 and
 [Meghan](https://github.com/pdxmeghan)
+
+##Tools
+Rails
+PostgreSQL
+ActiveRecord
+Ruby Gems
 
 ##License
 MIT
