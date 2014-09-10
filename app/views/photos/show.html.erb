@@ -1,5 +1,11 @@
 <br>
-<br><%= image_tag @photo.avatar.url(:medium) %>
+<br>
+
+<%= image_tag @photo.avatar.url(:medium) %>
+<br>
+<%= @photo.tally %> -
+<%= link_to image_tag("tinyheart.jpg"), user_photo_likes_path(@user, @photo), :data => {:method => "post"} %>
+
 <br>
 <p>In this photo: </p>
 <% @tags.each do |tag| %>

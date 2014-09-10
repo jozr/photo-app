@@ -20,6 +20,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @photos = @user.photos
+    @tags = Tag.where(:user_id => @user.id)
+    @tagged_photos = []
+    @tags.each do |tag|
+      @tagged_photos << Photo.where(:id => tag.photo_id)
+    end
+    @likes = Like.where(:user_id => @user.id)
+    @liked_photos = []
+    @likes.each do |like|
+      @liked_photos << Photo.where(:id => like.photo_id)
+    end
   end
 
   def edit

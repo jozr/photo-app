@@ -7,6 +7,7 @@ class PhotosController < ApplicationController
   end
 
   def new
+    @user = User.find(params[:user_id])
     @photo = Photo.new
   end
 
@@ -17,10 +18,11 @@ class PhotosController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:user_id])
     @photo = Photo.create(user_params)
     if @photo.valid?
       session[:photo_id] = @photo.id
-      redirect_to user_photos_path, notice: "Thanks for sharing!"
+      redirect_to user_path(@user), notice: "Thanks for sharing!"
     else
       render 'new'
     end
@@ -28,6 +30,7 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find(params[:id])
+    @tags = Tag.where(:photo_id => @photo.id)
     @photo.destroy
     flash[:notice] = "Photo has been deleted"
     redirect_to root_url

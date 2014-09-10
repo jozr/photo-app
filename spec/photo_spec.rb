@@ -4,5 +4,6 @@ require 'rails_helper'
     it {should belong_to :user}
     it {should validate_presence_of :avatar}
     it {should have_many :tags}
+    it {should have_many :likes}
   end
 

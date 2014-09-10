@@ -1,5 +1,44 @@
 <h1><%= @user.name %></h1>
 
-<%= link_to 'Photos', user_photos_path(@user) %> | <%= link_to 'Edit', edit_user_path(@user) %> | <%= link_to "Delete", user_path(@user),
+<p>Photos</p>
+<% if @photos == nil %>
+  <h2>None</h2>
+<% else %>
+  <% @photos.each do |photo| %>
+    <%= link_to (image_tag (photo.avatar.url(:thumb))), user_photo_path(@user, photo) %>
+  <% end %>
+<% end %>
+<br>
+<% if current_user == nil %>
+<% elsif current_user.id == @user.id %>
+  <%= link_to 'New', new_user_photo_path(@user) %>
+<% end %>
+
+<br>
+<br>
+
+<p>Tags</p>
+  <% @tagged_photos.each do |photo| %>
+    <%= link_to (image_tag (photo.first.avatar.url(:thumb))), user_photo_path(@user, photo.first) %>
+<% end %>
+
+<br>
+<br>
+
+<p>Likes</p>
+  <% @liked_photos.each do |like| %>
+    <%= link_to (image_tag (like.first.avatar.url(:thumb))), user_photo_path(@user, like.first) %>
+<% end %>
+
+<br>
+<br>
+
+<% if current_user == nil %>
+
+<% elsif current_user.id == @user.id %>
+ <%= link_to 'Edit User', edit_user_path(@user) %> | <%= link_to "Delete User", user_path(@user),
                                               :data => {:confirm => "Are you sure?",
                                               :method => "delete"} %>
+
+<% end %>
+

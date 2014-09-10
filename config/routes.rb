@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   resources :users do
     resources :photos do
       resources :tags
+      resources :likes
     end
+  end
+
+  resources :photos do
+    resources :likes
   end
   resources :sessions
 end
