@@ -7,7 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<h1>PhotoApp</h1>
 <%= link_to "Home", root_url %> |
 <% if current_user %>
   Logged in as <%= current_user.name %> |
@@ -16,6 +15,14 @@
   <%= link_to "Sign Up", signup_path %> |
   <%= link_to "Log In", login_path %>
 <% end %>
+<% if current_user == nil || @user == nil %>
+
+<% elsif current_user.id == @user.id %>
+<div class="smaller-text"><%= link_to 'Edit User', edit_user_path(@user) %> | <%= link_to "Delete User", user_path(@user),
+                                              :data => {:confirm => "Are you sure?",
+                                              :method => "delete"} %></div>
+<% end %>
+<h1 class="title">PhotoApp</h1>
 <%= yield %>
 <br>
 <br><%= flash[:notice] %>
