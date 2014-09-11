@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bcrypt'
 gem 'paperclip'
+gem 'cocaine'
 
 group :development do
   gem 'better_errors'

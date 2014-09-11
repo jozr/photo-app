@@ -3,8 +3,13 @@
 
 <%= image_tag @photo.avatar.url(:medium) %>
 <br>
+<% if current_user != nil %>
 <%= @photo.tally %> -
 <%= link_to image_tag("tinyheart.jpg"), user_photo_likes_path(@user, @photo), :data => {:method => "post"} %>
+<% else %>
+<%= image_tag("tinyheart.jpg") %>
+<% end %>
+
 
 <br>
 <p>In this photo: </p>
